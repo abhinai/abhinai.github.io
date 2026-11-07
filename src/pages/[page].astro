@@ -1,10 +1,11 @@
 ---
-// Simple Markdown pages from src/content/pages (about.md -> /about/, links.md -> /links/)
+// Simple Markdown pages from src/content/pages (about.md -> /about/, links.md -> /links/).
+// photos.md only holds the heading for /photos/, which has its own page.
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 
 export async function getStaticPaths() {
-  const pages = await getCollection('pages');
+  const pages = await getCollection('pages', (p) => p.id !== 'photos');
   return pages.map((page) => ({ params: { page: page.id }, props: { page } }));
 }
 

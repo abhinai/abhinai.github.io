@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import { AUTHOR, SITE_DESCRIPTION, SITE_NAME } from '../lib/site';
+import { categoryUrl, PHOTO_CATEGORY } from '../lib/posts';
+import categories from '../data/categories.json';
 
 interface Props {
   title?: string;
@@ -16,9 +18,8 @@ const isHome = path === '/';
 
 const nav = [
   { href: '/', label: 'Home' },
-  { href: '/category/technology/', label: 'Technology' },
-  { href: '/category/reflections/', label: 'Reflections' },
-  { href: '/category/personal/', label: 'Personal' },
+  // Categories marked "nav" in src/data/categories.json, in that order
+  ...categories.filter((c) => c.nav && c.name !== PHOTO_CATEGORY).map((c) => ({ href: categoryUrl(c.name), label: c.name })),
   { href: '/about/', label: 'About' },
   { href: '/links/', label: 'Links' },
   { href: '/photos/', label: 'Photos' },

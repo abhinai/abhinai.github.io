@@ -1,15 +1,17 @@
 ---
+import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { byWeight, formatDate, getPhotos, postUrl } from '../lib/posts';
 
 const photos = byWeight(await getPhotos());
+const page = (await getEntry('pages', 'photos'))!;
 ---
 
-<Base title="Photos" description="Pictures, and the stories behind them.">
+<Base title={page.data.title} description={page.data.description}>
   <div class="page-head">
     <span class="label">Gallery</span>
-    <h1>Photos</h1>
-    <p>Pictures, and the stories behind them.</p>
+    <h1>{page.data.title}</h1>
+    <p>{page.data.description}</p>
   </div>
 
   <div class="photos">

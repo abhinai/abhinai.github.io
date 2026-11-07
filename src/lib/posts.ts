@@ -4,9 +4,12 @@ export type Post = CollectionEntry<'blog'>;
 
 export const PHOTO_CATEGORY = 'Photos';
 
-/** Published posts, newest first. */
+// Private preview builds (SHOW_DRAFTS=true npm run build, used by the CMS) include drafts; the public build never does
+const SHOW_DRAFTS = typeof process !== 'undefined' && process.env.SHOW_DRAFTS === 'true';
+
+/** Published posts (plus drafts in preview builds), newest first. */
 export async function getPosts(): Promise<Post[]> {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const posts = await getCollection('blog', ({ data }) => SHOW_DRAFTS || !data.draft);
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 

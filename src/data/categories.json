@@ -1,0 +1,7 @@
+[
+  { "name": "Technology", "nav": true },
+  { "name": "Reflections", "nav": true },
+  { "name": "Personal", "nav": true },
+  { "name": "Economics", "nav": false },
+  { "name": "Photos", "nav": false }
+]
