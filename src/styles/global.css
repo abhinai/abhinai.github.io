@@ -166,6 +166,9 @@ a.label:hover { color: var(--ink); }
 .prose h3 { font-size: 22px; }
 .prose a { text-decoration: underline; text-decoration-color: var(--faint); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .prose a:hover { text-decoration-color: var(--ink); }
+/* Links page: same blue as article titles */
+.page-links .prose a { color: var(--title-link); }
+.page-links .prose a:hover { color: var(--title-link-hover); }
 .prose img { display: block; margin: 2em auto; border-radius: 6px; }
 .prose blockquote { margin: 1.6em 0; padding-left: 1.1em; border-left: 3px solid var(--rule-strong); color: var(--muted); }
 .prose ul, .prose ol { padding-left: 1.3em; margin: 0 0 1.25em; }
