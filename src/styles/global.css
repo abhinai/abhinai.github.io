@@ -170,6 +170,9 @@ a.label:hover { color: var(--ink); }
 .prose blockquote { margin: 1.6em 0; padding-left: 1.1em; border-left: 3px solid var(--rule-strong); color: var(--muted); }
 .prose ul, .prose ol { padding-left: 1.3em; margin: 0 0 1.25em; }
 .prose li { margin: .3em 0; }
+/* "Loose" Markdown lists wrap items in <p>; keep them spaced like tight lists */
+.prose li > p { margin: 0; }
+.prose li > p + p { margin-top: .6em; }
 .prose pre { background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font-size: 15px; line-height: 1.55; }
 .prose code { font-size: .88em; }
 .prose img.portrait { float: right; width: 240px; margin: 6px 0 20px 36px; border-radius: 6px; }
