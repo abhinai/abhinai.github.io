@@ -28,6 +28,9 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    // Optional portrait shown beside the opening paragraphs (also the page's share image)
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
   }),
 });
 

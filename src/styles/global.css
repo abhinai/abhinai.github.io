@@ -166,6 +166,7 @@ a.label:hover { color: var(--ink); }
 .prose li { margin: .3em 0; }
 .prose pre { background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; overflow-x: auto; font-size: 15px; line-height: 1.55; }
 .prose code { font-size: .88em; }
+.prose img.portrait { float: right; width: 240px; margin: 6px 0 20px 36px; border-radius: 6px; }
 .prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
 
 
@@ -208,4 +209,5 @@ a.label:hover { color: var(--ink); }
   .row.three > .story:last-child { border-bottom: 0; }
   .article h1 { font-size: 34px; }
   .prose { font-size: 18px; }
+  .prose img.portrait { float: none; width: min(280px, 75%); margin: 0 auto 32px; }
 }

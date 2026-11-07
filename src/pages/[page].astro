@@ -16,12 +16,13 @@ const { page } = Astro.props;
 const { Content } = await render(page);
 ---
 
-<Base title={page.data.title} description={page.data.description}>
+<Base title={page.data.title} description={page.data.description} image={page.data.image}>
   <article class="article">
     <header>
       <h1>{page.data.title}</h1>
     </header>
     <div class="prose">
+      {page.data.image && <img class="portrait" src={page.data.image} alt={page.data.imageAlt ?? ''} width="640" height="800" />}
       <Content />
     </div>
   </article>
