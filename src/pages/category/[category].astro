@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import StoryGrid from '../../components/StoryGrid.astro';
-import { getPosts, slugify, type Post } from '../../lib/posts';
+import { getPosts, PHOTO_CATEGORY, slugify, type Post } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-  const categories = [...new Set(posts.map((p) => p.data.category))];
+  // Photos is served by /photos/, not /category/photos/
+  const categories = [...new Set(posts.map((p) => p.data.category))].filter((c) => c !== PHOTO_CATEGORY);
   return categories.map((name) => ({
     params: { category: slugify(name) },
     props: { name, posts: posts.filter((p) => p.data.category === name) },

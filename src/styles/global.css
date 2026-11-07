@@ -64,6 +64,7 @@ img { max-width: 100%; height: auto; }
   padding: 40px 0 0;
   border-bottom: 3px solid var(--rule-strong);
 }
+.masthead .site-title { margin: 0; font: inherit; } /* home-page <h1> around the name: no visual change */
 .masthead .name {
   display: inline-block;
   font-size: 52px;

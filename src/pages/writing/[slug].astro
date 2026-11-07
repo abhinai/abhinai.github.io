@@ -2,7 +2,8 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import StoryGrid from '../../components/StoryGrid.astro';
-import { byWeight, categoryUrl, formatDate, getPosts, type Post } from '../../lib/posts';
+import { byWeight, categoryUrl, formatDate, getPosts, postUrl, type Post } from '../../lib/posts';
+import { AUTHOR } from '../../lib/site';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -23,9 +24,23 @@ interface Props {
 
 const { post, related } = Astro.props;
 const { Content } = await render(post);
+
+const url = new URL(postUrl(post), Astro.site).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  ...(post.data.description && { description: post.data.description }),
+  url,
+  mainEntityOfPage: url,
+  datePublished: post.data.published,
+  author: { '@type': 'Person', name: AUTHOR, url: new URL('/about/', Astro.site).href },
+  ...(post.data.cover && { image: new URL(post.data.cover, Astro.site).href }),
+};
 ---
 
 <Base title={post.data.title} description={post.data.description} image={post.data.cover}>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
   <article class="article">
     <header>
       <a class="label" href={categoryUrl(post.data.category)}>{post.data.category}</a>

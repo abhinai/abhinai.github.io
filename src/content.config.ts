@@ -19,7 +19,7 @@ const blog = defineCollection({
     sourceName: z.string().optional(),
   }).transform((d) => {
     const iso = typeof d.date === 'string' ? d.date : d.date.toISOString();
-    return { ...d, date: new Date(iso), day: iso.slice(0, 10) };
+    return { ...d, date: new Date(iso), day: iso.slice(0, 10), published: iso };
   }),
 });
 

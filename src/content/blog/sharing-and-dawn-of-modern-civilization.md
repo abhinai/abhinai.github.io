@@ -26,8 +26,6 @@ Could it have been the printing revolution? Let us look at the timeline of scien
 
 ![](/images/sharing-and-dawn-of-modern-civilization/1.png)
 
-[](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQqSveSbZqeisuJgZLL75ylTfprCzFXyST8bVOjPX3fcoRRQWg6R1-te9N5wwCZ7yeV_zZylksPbYe2Ia6QzdUsSI4jlyJhrJHYSZA1bUVV5OJ56lawNNqX6k7bSie2_uttMB5Mt_ffvs/s1600/Timescale.png)
-
 For sake of simplicity in the above diagram I have assumed that dates for people are birth year + 25 years.
 
 When i started plotting the above diagram, I was not sure what to expect. We were all probably taught in school that invention of printing press was great, allowed publishing of books blah blah blah. I really did not know just how important this invention was and how it may have been the one force that single-handedly led to creation of the modern civilization.

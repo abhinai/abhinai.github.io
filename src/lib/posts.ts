@@ -31,4 +31,6 @@ export function formatDate(day: string, month: 'long' | 'short' = 'long'): strin
 export const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export const postUrl = (post: Post) => `/writing/${post.id}/`;
-export const categoryUrl = (category: string) => `/category/${slugify(category)}/`;
+// Photos has its own gallery page instead of a category page
+export const categoryUrl = (category: string) =>
+  category === PHOTO_CATEGORY ? '/photos/' : `/category/${slugify(category)}/`;

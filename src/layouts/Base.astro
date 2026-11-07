@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { AUTHOR, SITE_DESCRIPTION, SITE_NAME } from '../lib/site';
 
 interface Props {
   title?: string;
@@ -7,13 +8,11 @@ interface Props {
   image?: string;
 }
 
-const SITE_NAME = 'Abhinai';
-const SITE_DESCRIPTION = 'A personal collection of thoughts, experiments, and observations.';
-
 const { title, description = SITE_DESCRIPTION, image } = Astro.props;
 const pageTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Ideas, technology, life`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
+const isHome = path === '/';
 
 const nav = [
   { href: '/', label: 'Home' },
@@ -34,21 +33,29 @@ const isCurrent = (href: string) => path === href || path === href.slice(0, -1);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={AUTHOR} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={title ?? SITE_NAME} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={title ? 'article' : 'website'} />
     {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    <slot name="head" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <div class="sheet">
       <header class="masthead">
-        <a class="name" href="/">Abhinai Srivastava</a>
+        {/* The home page has no other heading, so the name is its <h1> there */}
+        {isHome ? (
+          <h1 class="site-title"><a class="name" href="/">{SITE_NAME}</a></h1>
+        ) : (
+          <a class="name" href="/">{SITE_NAME}</a>
+        )}
         <p class="tagline">Ideas · Technology · Life</p>
         <nav aria-label="Main">
           {nav.map((item) => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
@@ -60,7 +67,7 @@ const isCurrent = (href: string) => path === href || path === href.slice(0, -1);
       </main>
 
       <footer class="site-footer">
-        <span>© {new Date().getFullYear()} Abhinai Srivastava</span>
+        <span>© {new Date().getFullYear()} {AUTHOR}</span>
         <nav aria-label="Footer">
           <a href="/rss.xml">RSS</a>
           <a href="https://linkedin.com/in/abhinai">LinkedIn</a>
