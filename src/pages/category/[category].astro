@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoryGrid from '../../components/StoryGrid.astro';
+import { getPosts, slugify, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const categories = [...new Set(posts.map((p) => p.data.category))];
+  return categories.map((name) => ({
+    params: { category: slugify(name) },
+    props: { name, posts: posts.filter((p) => p.data.category === name) },
+  }));
+}
+
+interface Props {
+  name: string;
+  posts: Post[];
+}
+
+const { name, posts } = Astro.props;
+---
+
+<Base title={name} description={`Posts filed under ${name}.`}>
+  <div class="page-head">
+    <span class="label">Category</span>
+    <h1>{name}</h1>
+    <p>{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+  </div>
+  <StoryGrid posts={posts} label="date" />
+</Base>

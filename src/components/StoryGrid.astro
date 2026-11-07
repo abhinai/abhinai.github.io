@@ -1,0 +1,59 @@
+---
+// Front-page layout: one large lead story, then the rest in rows whose column counts repeat `pattern`.
+import { byWeight, categoryUrl, formatDate, postUrl, type Post } from '../lib/posts';
+
+interface Props {
+  posts: Post[];
+  /** Small label above each story: its category (home) or its date (category pages, where the category is implied). */
+  label?: 'category' | 'date';
+  /** Show the first (or featured) post as a large lead story. */
+  lead?: boolean;
+  pattern?: (2 | 3)[];
+}
+
+const { label = 'category', pattern = [2, 2, 3] } = Astro.props;
+const posts = byWeight(Astro.props.posts);
+
+const lead = Astro.props.lead === false ? undefined : (posts.find((p) => p.data.featured) ?? posts[0]);
+const rest = posts.filter((p) => p !== lead);
+const rows: { size: 2 | 3; posts: Post[] }[] = [];
+for (let i = 0, r = 0; i < rest.length; i += pattern[r % pattern.length], r++) {
+  const size = pattern[r % pattern.length];
+  rows.push({ size, posts: rest.slice(i, i + size) });
+}
+---
+
+{
+  lead && (
+    <article class="story featured">
+      <span class="label">{lead.data.featured ? 'Featured essay' : 'Latest'}</span>
+      <h2><a href={postUrl(lead)}>{lead.data.title}</a></h2>
+      {lead.data.description && <p>{lead.data.description}</p>}
+      <div class="meta">
+        {label === 'category' ? (
+          <a href={categoryUrl(lead.data.category)}>{lead.data.category}</a>
+        ) : (
+          <time datetime={lead.data.day}>{formatDate(lead.data.day)}</time>
+        )}
+      </div>
+    </article>
+  )
+}
+
+{
+  rows.map((row) => (
+    <section class:list={['row', row.size === 2 ? 'two' : 'three']}>
+      {row.posts.map((post) => (
+        <article class="story">
+          {label === 'category' ? (
+            <a class="label" href={categoryUrl(post.data.category)}>{post.data.category}</a>
+          ) : (
+            <time class="label" datetime={post.data.day}>{formatDate(post.data.day, 'short')}</time>
+          )}
+          <h3><a href={postUrl(post)}>{post.data.title}</a></h3>
+          {post.data.description && <p>{post.data.description}</p>}
+        </article>
+      ))}
+    </section>
+  ))
+}

@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { byWeight, formatDate, getPhotos, postUrl } from '../lib/posts';
+
+const photos = byWeight(await getPhotos());
+---
+
+<Base title="Photos" description="Pictures, and the stories behind them.">
+  <div class="page-head">
+    <span class="label">Gallery</span>
+    <h1>Photos</h1>
+    <p>Pictures, and the stories behind them.</p>
+  </div>
+
+  <div class="photos">
+    {
+      photos.map((post) => (
+        <a href={postUrl(post)}>
+          <figure>
+            <img src={post.data.cover} alt={post.data.title} loading="lazy" />
+            <figcaption>
+              <span class="title">{post.data.title}</span>
+              <span class="meta faint">{formatDate(post.data.day)}</span>
+            </figcaption>
+          </figure>
+        </a>
+      ))
+    }
+  </div>
+</Base>

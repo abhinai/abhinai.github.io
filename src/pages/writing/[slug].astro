@@ -1,0 +1,51 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import StoryGrid from '../../components/StoryGrid.astro';
+import { byWeight, categoryUrl, formatDate, getPosts, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      related: byWeight(posts.filter((p) => p.data.category === post.data.category && p !== post)).slice(0, 4),
+    },
+  }));
+}
+
+interface Props {
+  post: Post;
+  /** Other posts in the same category, shown below the article */
+  related: Post[];
+}
+
+const { post, related } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={post.data.title} description={post.data.description} image={post.data.cover}>
+  <article class="article">
+    <header>
+      <a class="label" href={categoryUrl(post.data.category)}>{post.data.category}</a>
+      <h1>{post.data.title}</h1>
+      <div class="meta">
+        <time datetime={post.data.day}>{formatDate(post.data.day)}</time>
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="related">
+        <h2>More in <a href={categoryUrl(post.data.category)}>{post.data.category}</a></h2>
+        <StoryGrid posts={related} label="date" lead={false} pattern={[2]} />
+      </section>
+    )
+  }
+</Base>

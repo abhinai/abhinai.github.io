@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const SITE_NAME = 'Abhinai';
+const SITE_DESCRIPTION = 'A personal collection of thoughts, experiments, and observations.';
+
+const { title, description = SITE_DESCRIPTION, image } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Ideas, technology, life`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/category/technology/', label: 'Technology' },
+  { href: '/category/reflections/', label: 'Reflections' },
+  { href: '/category/personal/', label: 'Personal' },
+  { href: '/about/', label: 'About' },
+  { href: '/links/', label: 'Links' },
+  { href: '/photos/', label: 'Photos' },
+];
+const isCurrent = (href: string) => path === href || path === href.slice(0, -1);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:title" content={title ?? SITE_NAME} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={title ? 'article' : 'website'} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="sheet">
+      <header class="masthead">
+        <a class="name" href="/">Abhinai Srivastava</a>
+        <p class="tagline">Ideas · Technology · Life</p>
+        <nav aria-label="Main">
+          {nav.map((item) => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
+        </nav>
+      </header>
+
+      <main id="main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <span>© {new Date().getFullYear()} Abhinai Srivastava</span>
+        <nav aria-label="Footer">
+          <a href="/rss.xml">RSS</a>
+          <a href="https://linkedin.com/in/abhinai">LinkedIn</a>
+          <a href="https://x.com/abhinai">X</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

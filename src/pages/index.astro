@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import StoryGrid from '../components/StoryGrid.astro';
+import { getWriting } from '../lib/posts';
+
+const writing = await getWriting();
+---
+
+<Base>
+  <p class="intro">A personal collection of thoughts, experiments, and observations.</p>
+  <StoryGrid posts={writing} />
+</Base>
