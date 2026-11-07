@@ -8,6 +8,8 @@
   --faint: #888;
   --rule: #e6e6e6;
   --rule-strong: #dedede;
+  --title-link: #205caa;
+  --title-link-hover: #1a4c8e;
   --serif: Georgia, "Times New Roman", serif;
   --sans: Arial, Helvetica, sans-serif;
   --measure: 680px;
@@ -25,6 +27,8 @@
     --faint: #7c7c7c;
     --rule: #262626;
     --rule-strong: #303030;
+    --title-link: #7aa7e6;
+    --title-link-hover: #9dbdf0;
   }
 }
 
@@ -119,7 +123,9 @@ a.label:hover { color: var(--ink); }
 
 /* Home page story blocks */
 .story h2, .story h3 { color: var(--ink); font-weight: 700; letter-spacing: -0.02em; margin: 0; }
-.story h2 a:hover, .story h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+/* Titles that link to articles (story lists, "More in …", Photos): one blue whether visited or not */
+.story h2 a, .story h3 a { color: var(--title-link); }
+.story h2 a:hover, .story h3 a:hover { color: var(--title-link-hover); }
 .story p { margin: 0; color: var(--dek); }
 
 .featured { padding: 44px 0 40px; border-bottom: 1px solid var(--rule-strong); }
@@ -188,8 +194,8 @@ a.label:hover { color: var(--ink); }
 .photos figure { margin: 0; }
 .photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 20%; border-radius: 10px; background: var(--bg); display: block; }
 .photos figcaption { margin-top: 12px; }
-.photos figcaption .title { display: block; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
-.photos a:hover .title { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.photos figcaption .title { display: block; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--title-link); }
+.photos a:hover figcaption .title { color: var(--title-link-hover); }
 
 /* Site footer */
 .site-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 26px 0 30px; border-top: 3px solid var(--rule-strong); font-family: var(--sans); font-size: 13px; color: var(--faint); }
