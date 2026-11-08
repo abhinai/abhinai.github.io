@@ -6,6 +6,7 @@ description: "What caused modern civilization to start taking shape all of a sud
 cover: "/images/sharing-and-dawn-of-modern-civilization/1.png"
 source: "https://abhinaisrivastava.blogspot.com/2011/08/sharing-and-dawn-of-modern-civilization.html"
 sourceName: "Blogger"
+weight: 2
 ---
 
 What caused modern civilization to start taking shape all of a sudden around middle of last millennium? Things had barely changed for several thousands of years until then and civilization was in a kind of steady state. New discoveries have been made throughout human history but the rate of change had been extremely slow until about 1400s.

@@ -6,6 +6,7 @@ description: "A colleague once told me, when you have no idea how to solve a pro
 featured: true
 source: "https://medium.com/@abhinai/the-beauty-of-genetic-algorithms-fde052d51677"
 sourceName: "Medium"
+weight: 2
 ---
 
 A colleague once told me, when you have no idea how to solve a problem, you should use Genetic Algorithms. It is a class of algorithms that attempt to solve a problem by taking an inspiration from the process of natural selection.

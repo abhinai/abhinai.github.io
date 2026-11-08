@@ -6,6 +6,7 @@ description: "Human brain is an intelligent machine. One aspect of intelligence 
 cover: "/images/linearity-of-consciousness/1.png"
 source: "https://abhinaisrivastava.blogspot.com/2011/08/linearity-of-consciousness.html"
 sourceName: "Blogger"
+weight: 2
 ---
 
 Human brain is an intelligent machine. One aspect of intelligence is to take examples of some event, understand the patterns in those examples and finally use this knowledge to predict nature of this event in future. An understanding of several events and their natures finally culminates in "experience" of a human being.

@@ -5,6 +5,7 @@ category: "Reflections"
 description: "Reading this book changed my life. I realized that setbacks and obstacles are a fact of how the world operates. They are like entropy. They are always going to…"
 source: "https://medium.com/@abhinai/obstacle-is-the-way-a6775b674420"
 sourceName: "Medium"
+weight: 2
 ---
 
 Reading this book changed my life.

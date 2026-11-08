@@ -5,6 +5,7 @@ category: "Reflections"
 description: "The original purpose of my blog was to journal my thoughts and learnings. But I’ve recently noticed that many people I interview for potential roles, look me…"
 source: "https://medium.com/@abhinai/what-impresses-me-in-a-job-interview-bde7e4356cd9"
 sourceName: "Medium"
+weight: 2
 ---
 
 The original purpose of my blog was to journal my thoughts and learnings. But I’ve recently noticed that many people I interview for potential roles, look me up and read this blog in an effort to know how to impress me. I thought I’d make it easy for them.

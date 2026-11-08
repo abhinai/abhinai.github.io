@@ -5,6 +5,7 @@ category: "Reflections"
 description: "The frontal lobe is a part of the brain that is located right behind the forehead. It is responsible for speech, motor co-ordination, planning, reasoning,…"
 source: "https://medium.com/@abhinai/maturity-the-frontal-lobe-and-the-magic-age-of-25-2596306a1959"
 sourceName: "Medium"
+weight: 2
 ---
 
 The frontal lobe is a part of the brain that is located right behind the forehead. It is responsible for speech, motor co-ordination, planning, reasoning, problem-solving, decision-making and regulating emotions.

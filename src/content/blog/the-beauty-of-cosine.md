@@ -5,6 +5,7 @@ category: "Technology"
 description: "In the early 2000s, a new kind of search engine came along. It was called Vivisimo and it returned clustered search results. Having a machine cluster results…"
 source: "https://medium.com/@abhinai/the-beauty-of-cosine-698bc3314ebe"
 sourceName: "Medium"
+weight: 2
 ---
 
 In the early 2000s, a new kind of search engine came along. It was called Vivisimo and it returned clustered search results. Having a machine cluster results in a meaningful way was quite impressive.

@@ -5,6 +5,7 @@ category: "Reflections"
 description: "Do kids really have an advantage when it comes to learning new things? Is there a point where we’re to old to learn something new? Do older adults learn slower…"
 source: "https://medium.com/@abhinai/do-kids-have-an-advantage-when-it-comes-to-learning-new-things-0f20f23ae2a7"
 sourceName: "Medium"
+weight: 2
 ---
 
 Do kids really have an advantage when it comes to learning new things? Is there a point where we’re to old to learn something new? Do older adults learn slower than young kids, if they can learn new things at all?

@@ -5,6 +5,7 @@ category: "Reflections"
 description: "This post builds on my previous post: Failing is important. To succeed at anything, we need to fail first. To be successful in life, we need to fail a lot.…"
 source: "https://medium.com/@abhinai/how-to-get-good-at-failing-599045e61b8f"
 sourceName: "Medium"
+weight: 2
 ---
 
 *This post builds on my previous post:* [*Failing is important.*](/writing/failing-is-important/)
