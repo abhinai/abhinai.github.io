@@ -11,6 +11,9 @@ const blog = defineCollection({
     category: z.string(),
     description: z.string().optional(),
     cover: z.string().optional(),
+    // Photos: the 4:3 crop shown on the Photos page (made in the CMS), and that crop as "left top width"
+    thumb: z.string().optional(),
+    crop: z.string().optional(),
     featured: z.boolean().default(false),
     // Listing order: higher weight first, then newest first
     weight: z.number().default(1),

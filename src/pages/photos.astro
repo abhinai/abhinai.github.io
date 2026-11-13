@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { byWeight, formatDate, getPhotos, postUrl } from '../lib/posts';
+import { byWeight, formatDate, getPhotos, photoAlt, postUrl } from '../lib/posts';
 
 const photos = byWeight(await getPhotos());
 const page = (await getEntry('pages', 'photos'))!;
@@ -19,7 +19,7 @@ const page = (await getEntry('pages', 'photos'))!;
       photos.map((post) => (
         <a href={postUrl(post)}>
           <figure>
-            <img src={post.data.cover} alt={post.data.title} loading="lazy" />
+            <img src={post.data.thumb ?? post.data.cover} alt={photoAlt(post)} width="960" height="720" loading="lazy" />
             <figcaption>
               <span class="title">{post.data.title}</span>
               <span class="meta faint">{formatDate(post.data.day)}</span>

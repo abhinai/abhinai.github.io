@@ -26,6 +26,11 @@ export async function getPhotos(): Promise<Post[]> {
   return (await getPosts()).filter((p) => p.data.category === PHOTO_CATEGORY && p.data.cover);
 }
 
+/** Alt text of a post's photo: the first image in its text (where the CMS keeps it), else the title. */
+export function photoAlt(post: Post): string {
+  return post.body?.match(/!\[([^\]]*)\]\(/)?.[1].trim() || post.data.title;
+}
+
 /** Format a YYYY-MM-DD calendar day (post.data.day), e.g. "March 16, 2024" or with month: 'short' "Mar 16, 2024". */
 export function formatDate(day: string, month: 'long' | 'short' = 'long'): string {
   return new Date(`${day}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month, day: 'numeric', timeZone: 'UTC' });

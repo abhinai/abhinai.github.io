@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import StoryGrid from '../../components/StoryGrid.astro';
-import { byWeight, categoryUrl, formatDate, getPosts, postUrl, type Post } from '../../lib/posts';
+import { byWeight, categoryUrl, formatDate, getPosts, photoAlt, postUrl, PHOTO_CATEGORY, type Post } from '../../lib/posts';
 import { AUTHOR } from '../../lib/site';
 
 export async function getStaticPaths() {
@@ -39,7 +39,12 @@ const jsonLd = {
 };
 ---
 
-<Base title={post.data.title} description={post.data.description} image={post.data.cover}>
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.cover}
+  imageAlt={post.data.category === PHOTO_CATEGORY ? photoAlt(post) : undefined}
+>
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
   <article class="article">
     <header>

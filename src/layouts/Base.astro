@@ -8,9 +8,11 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  /** Describes the share image */
+  imageAlt?: string;
 }
 
-const { title, description = SITE_DESCRIPTION, image } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image, imageAlt } = Astro.props;
 const pageTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Ideas, technology, life`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
@@ -45,6 +47,7 @@ const isCurrent = (href: string) => path === href || path === href.slice(0, -1);
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={title ? 'article' : 'website'} />
     {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    {image && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
     <slot name="head" />
   </head>
   <body>
