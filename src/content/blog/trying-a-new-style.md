@@ -6,3 +6,5 @@ cover: "/images/trying-a-new-style/1.jpg"
 ---
 
 Trying to focus on how to dress better. Still early days and lots of experimentation ahead.
+
+![](/images/trying-a-new-style/2.jpg)
